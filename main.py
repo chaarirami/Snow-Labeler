@@ -9,11 +9,13 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter.filedialog import askopenfilename
 import os
+import shutil
 
 BUTTONPADX = 25
 BUTTONPADY = 5
 imagePath = "9OPjrDeBWQCEm9XbzAw7TNTXWQHNE4ETLpfYoXTwekg.jpg"
-myFilepath = "test"
+folderPath = "C:\\Users\\ramic\\Pictures\\Saved Pictures"
+completePath = "C:\\Users\\ramic\\Pictures\\Saved Pictures\\eden.png"
 
 window = Tk()
 
@@ -43,18 +45,38 @@ text_dir = Text(fr_navDes, wrap=WORD, height=1, width = 50)
 
 #function for choosing the dir
 def openFolder():
-    global myFilepath
-    myFilepath =  filedialog.askdirectory()
-    list = os.listdir(myFilepath)
+    global folderPath
+    folderPath =  filedialog.askdirectory()
+    list = os.listdir(folderPath)
     for item in list:
         myListbox.insert(END, item)
-    updateTextBox(myFilepath)
+    updateTextBox(folderPath)
 
 def onselect(event):
     w = event.widget
     idx = int(w.curselection()[0])
     imagePath = w.get(idx)
-    path=myFilepath + "/" + imagePath
+    global completePath
+    completePath = folderPath + "/" + imagePath
+    updateImage(completePath)
+
+def moveFile(source, destination):
+    #check if source is already there
+    print(source, "->", destination )
+    #if not (os.path.exists(destination)):
+        #print("ok")
+    #check if destination exists
+    if not (os.path.exists(destination)):
+        os.makedirs(destination)
+    shutil.move(source, destination)
+
+#updating the layout
+def updateTextBox(text):
+    text_dir.delete('1.0',END)
+    text_dir.insert(END,text)
+    text_dir.config(wrap=WORD)
+
+def updateImage(path):
     image = Image.open(path)
     image = image.resize((200,200), Image.NEAREST)
     photo = ImageTk.PhotoImage(image)
@@ -62,26 +84,21 @@ def onselect(event):
     imageLabel.image = photo
     imageLabel.grid(row=0, column=1, sticky="nsew", padx=25, pady=5)
 
-def updateTextBox(text):
-    text_dir.delete('1.0',END)
-    text_dir.insert(END,text)
-    text_dir.config(wrap=WORD)
-
 myListbox.bind('<<ListboxSelect>>', onselect)
 
 #widgets
 #for amount of Snow
-btn_label_0 = Button(fr_labelButtons, text="0%")
-btn_label_10 = Button(fr_labelButtons, text="10%")
-btn_label_20 = Button(fr_labelButtons, text="20%")
-btn_label_30 = Button(fr_labelButtons, text="30%")
-btn_label_40 = Button(fr_labelButtons, text="40%")
-btn_label_50 = Button(fr_labelButtons, text="50%")
-btn_label_60 = Button(fr_labelButtons, text="60%")
-btn_label_70 = Button(fr_labelButtons, text="70%")
-btn_label_80 = Button(fr_labelButtons, text="80%")
-btn_label_90 = Button(fr_labelButtons, text="90%")
-btn_label_100 =Button(fr_labelButtons, text="100%")
+btn_label_0 = Button(fr_labelButtons, text="0%", command =lambda: moveFile(completePath, (folderPath + "/class0")))
+btn_label_10 = Button(fr_labelButtons, text="10%", command =lambda: moveFile(completePath, (folderPath + "/class10")))
+btn_label_20 = Button(fr_labelButtons, text="20%", command =lambda: moveFile(completePath, (folderPath + "/class20")))
+btn_label_30 = Button(fr_labelButtons, text="30%", command =lambda: moveFile(completePath, (folderPath + "/class30")))
+btn_label_40 = Button(fr_labelButtons, text="40%", command =lambda: moveFile(completePath, (folderPath + "/class40")))
+btn_label_50 = Button(fr_labelButtons, text="50%", command =lambda: moveFile(completePath, (folderPath + "/class50")))
+btn_label_60 = Button(fr_labelButtons, text="60%", command =lambda: moveFile(completePath, (folderPath + "/class60")))
+btn_label_70 = Button(fr_labelButtons, text="70%", command =lambda: moveFile(completePath, (folderPath + "/class70")))
+btn_label_80 = Button(fr_labelButtons, text="80%", command =lambda: moveFile(completePath, (folderPath + "/class80")))
+btn_label_90 = Button(fr_labelButtons, text="90%", command =lambda: moveFile(completePath, (folderPath + "/class90")))
+btn_label_100 =Button(fr_labelButtons, text="100%", command =lambda: moveFile(completePath, (folderPath + "/class100")))
 
 
 #for image
@@ -92,7 +109,6 @@ imageLabel.image = photo
 btn_choose_dir = Button(fr_navDes, text = "Choose Folder:", command=openFolder)
 
 
-#myListbox = Listbox
 #grid layout
 #for labeling the image
 fr_labelButtons.grid(row=1, column=1, sticky="ns")
