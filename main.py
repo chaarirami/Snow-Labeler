@@ -48,6 +48,7 @@ def openFolder():
     global folderPath
     folderPath =  filedialog.askdirectory()
     list = os.listdir(folderPath)
+    myListbox.delete(1, END)
     for item in list:
         myListbox.insert(END, item)
     updateTextBox(folderPath)
@@ -88,17 +89,29 @@ myListbox.bind('<<ListboxSelect>>', onselect)
 
 #widgets
 #for amount of Snow
-btn_label_0 = Button(fr_labelButtons, text="0%", command =lambda: moveFile(completePath, (folderPath + "/class0")))
-btn_label_10 = Button(fr_labelButtons, text="10%", command =lambda: moveFile(completePath, (folderPath + "/class10")))
-btn_label_20 = Button(fr_labelButtons, text="20%", command =lambda: moveFile(completePath, (folderPath + "/class20")))
-btn_label_30 = Button(fr_labelButtons, text="30%", command =lambda: moveFile(completePath, (folderPath + "/class30")))
-btn_label_40 = Button(fr_labelButtons, text="40%", command =lambda: moveFile(completePath, (folderPath + "/class40")))
-btn_label_50 = Button(fr_labelButtons, text="50%", command =lambda: moveFile(completePath, (folderPath + "/class50")))
-btn_label_60 = Button(fr_labelButtons, text="60%", command =lambda: moveFile(completePath, (folderPath + "/class60")))
-btn_label_70 = Button(fr_labelButtons, text="70%", command =lambda: moveFile(completePath, (folderPath + "/class70")))
-btn_label_80 = Button(fr_labelButtons, text="80%", command =lambda: moveFile(completePath, (folderPath + "/class80")))
-btn_label_90 = Button(fr_labelButtons, text="90%", command =lambda: moveFile(completePath, (folderPath + "/class90")))
-btn_label_100 =Button(fr_labelButtons, text="100%", command =lambda: moveFile(completePath, (folderPath + "/class100")))
+btn_label_0 = Button(fr_labelButtons, text="0% (X)", command =lambda: moveFile(completePath, (folderPath + "/class0")))
+btn_label_10 = Button(fr_labelButtons, text="10% (1)", command =lambda: moveFile(completePath, (folderPath + "/class10")))
+btn_label_20 = Button(fr_labelButtons, text="20% (2)", command =lambda: moveFile(completePath, (folderPath + "/class20")))
+btn_label_30 = Button(fr_labelButtons, text="30% (3)", command =lambda: moveFile(completePath, (folderPath + "/class30")))
+btn_label_40 = Button(fr_labelButtons, text="40% (4)", command =lambda: moveFile(completePath, (folderPath + "/class40")))
+btn_label_50 = Button(fr_labelButtons, text="50% (5)", command =lambda: moveFile(completePath, (folderPath + "/class50")))
+btn_label_60 = Button(fr_labelButtons, text="60% (6)", command =lambda: moveFile(completePath, (folderPath + "/class60")))
+btn_label_70 = Button(fr_labelButtons, text="70% (7)", command =lambda: moveFile(completePath, (folderPath + "/class70")))
+btn_label_80 = Button(fr_labelButtons, text="80% (8)", command =lambda: moveFile(completePath, (folderPath + "/class80")))
+btn_label_90 = Button(fr_labelButtons, text="90% (9)", command =lambda: moveFile(completePath, (folderPath + "/class90")))
+btn_label_100 =Button(fr_labelButtons, text="100% (0)", command =lambda: moveFile(completePath, (folderPath + "/class100")))
+#binding keys
+window.bind('x', lambda event: moveFile(completePath, (folderPath + "/class0")))
+window.bind('1', lambda event: moveFile(completePath, (folderPath + "/class10")))
+window.bind('2', lambda event: moveFile(completePath, (folderPath + "/class20")))
+window.bind('3', lambda event: moveFile(completePath, (folderPath + "/class30")))
+window.bind('4', lambda event: moveFile(completePath, (folderPath + "/class40")))
+window.bind('5', lambda event: moveFile(completePath, (folderPath + "/class50")))
+window.bind('6', lambda event: moveFile(completePath, (folderPath + "/class60")))
+window.bind('7', lambda event: moveFile(completePath, (folderPath + "/class70")))
+window.bind('8', lambda event: moveFile(completePath, (folderPath + "/class80")))
+window.bind('9', lambda event: moveFile(completePath, (folderPath + "/class90")))
+window.bind('0', lambda event: moveFile(completePath, (folderPath + "/class100")))
 
 
 #for image
@@ -106,7 +119,9 @@ imageLabel = Label(image = photo)
 imageLabel.image = photo
 
 #for choosing the image
-btn_choose_dir = Button(fr_navDes, text = "Choose Folder:", command=openFolder)
+btn_choose_dir = Button(fr_navDes, text = "Choose Folder: (Q)", command=openFolder)
+window.bind('q', lambda event: openFolder())
+
 
 
 #grid layout
