@@ -13,9 +13,9 @@ import shutil
 
 BUTTONPADX = 25
 BUTTONPADY = 5
-imagePath = "9OPjrDeBWQCEm9XbzAw7TNTXWQHNE4ETLpfYoXTwekg.jpg"
-folderPath = "C:\\Users\\ramic\\Pictures\\Saved Pictures"
-completePath = "C:\\Users\\ramic\\Pictures\\Saved Pictures\\eden.png"
+#imagePath = "9OPjrDeBWQCEm9XbzAw7TNTXWQHNE4ETLpfYoXTwekg.jpg"
+#folderPath = "C:\\Users\\ramic\\Pictures\\Saved Pictures"
+#completePath = "C:\\Users\\ramic\\Pictures\\Saved Pictures\\eden.png"
 
 window = Tk()
 
@@ -36,9 +36,9 @@ window.columnconfigure(1, minsize=100, weight=1)
 fr_labelButtons = Frame(window) #frame for labelButtons
 fr_navDes = Frame(window) #frame to chose image to display
 #image = tk.Frame(window)
-image = Image.open(imagePath)
-image = image.resize((200,200), Image.NEAREST)
-photo = ImageTk.PhotoImage(image)
+#image = Image.open(imagePath)
+#image = image.resize((200,200), Image.NEAREST)
+#photo = ImageTk.PhotoImage(image)
 myListbox = Listbox(fr_navDes)
 text_dir = Text(fr_navDes, wrap=WORD, height=1, width = 50)
 
@@ -79,7 +79,7 @@ def updateTextBox(text):
 
 def updateImage(path):
     image = Image.open(path)
-    image = image.resize((200,200), Image.NEAREST)
+    image = image.resize((640,480), Image.NEAREST)
     photo = ImageTk.PhotoImage(image)
     imageLabel = Label(image = photo)
     imageLabel.image = photo
@@ -115,8 +115,8 @@ window.bind('0', lambda event: moveFile(completePath, (folderPath + "/class100")
 
 
 #for image
-imageLabel = Label(image = photo)
-imageLabel.image = photo
+#imageLabel = Label(image = photo)
+#imageLabel.image = photo
 
 #for choosing the image
 btn_choose_dir = Button(fr_navDes, text = "Choose Folder: (Q)", command=openFolder)
@@ -146,7 +146,7 @@ myListbox.grid(row=1,column=0, padx=BUTTONPADX, pady=BUTTONPADY)
 text_dir.grid(row=0, column=0, padx=BUTTONPADX, pady=BUTTONPADY)
 
 #show the image
-imageLabel.grid(row=0, column=1, sticky="nsew", padx=25, pady=5)
+#imageLabel.grid(row=0, column=1, sticky="nsew", padx=25, pady=5)
 
 
 window.mainloop()
