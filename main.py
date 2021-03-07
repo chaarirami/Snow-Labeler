@@ -100,6 +100,8 @@ btn_label_70 = Button(fr_labelButtons, text="70% (7)", command =lambda: moveFile
 btn_label_80 = Button(fr_labelButtons, text="80% (8)", command =lambda: moveFile(completePath, (folderPath + "/class80")))
 btn_label_90 = Button(fr_labelButtons, text="90% (9)", command =lambda: moveFile(completePath, (folderPath + "/class90")))
 btn_label_100 =Button(fr_labelButtons, text="100% (0)", command =lambda: moveFile(completePath, (folderPath + "/class100")))
+
+btn_label_rejected =Button(fr_labelButtons, text="rejected (r)", command =lambda: moveFile(completePath, (folderPath + "/rejected")))
 #binding keys
 window.bind('x', lambda event: moveFile(completePath, (folderPath + "/class0")))
 window.bind('1', lambda event: moveFile(completePath, (folderPath + "/class10")))
@@ -112,6 +114,7 @@ window.bind('7', lambda event: moveFile(completePath, (folderPath + "/class70"))
 window.bind('8', lambda event: moveFile(completePath, (folderPath + "/class80")))
 window.bind('9', lambda event: moveFile(completePath, (folderPath + "/class90")))
 window.bind('0', lambda event: moveFile(completePath, (folderPath + "/class100")))
+window.bind('r', lambda event: moveFile(completePath, (folderPath + "/rejected")))
 
 
 #for image
@@ -133,11 +136,12 @@ btn_label_20.grid(row=1, column=2, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY
 btn_label_30.grid(row=1, column=3, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
 btn_label_40.grid(row=1, column=4, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
 btn_label_50.grid(row=1, column=5, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
-btn_label_60.grid(row=1, column=6, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
-btn_label_70.grid(row=1, column=7, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
-btn_label_80.grid(row=1, column=8, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
-btn_label_90.grid(row=1, column=9, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
-btn_label_100.grid(row=1, column=10, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
+btn_label_60.grid(row=2, column=0, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
+btn_label_70.grid(row=2, column=1, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
+btn_label_80.grid(row=2, column=2, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
+btn_label_90.grid(row=2, column=3, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
+btn_label_100.grid(row=2, column=4, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
+btn_label_rejected.grid(row=2, column=5, sticky="ew", padx=BUTTONPADX, pady=BUTTONPADY)
 
 #for choosing the image
 fr_navDes.grid(row=0, column=0, sticky="ns")
